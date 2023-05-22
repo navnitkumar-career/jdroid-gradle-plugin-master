@@ -1,0 +1,48 @@
+ext.PROJECT_NAME = "Gradle Plugin for Gradle Plugin projects"
+description = "Gradle Plugin for Gradle Plugin projects"
+ext.ARTIFACT_ID = "jdroid-gradle-project-plugin"
+
+apply plugin: "com.jdroidtools.gradle.plugin"
+//apply plugin: "com.gradle.plugin-publish"
+
+buildscript {
+	dependencies {
+		//classpath(BuildLibs.GRADLE_PLUGIN_PUBLISH_PLUGIN)
+		classpath(BuildLibs.JDROID_GRADLE_PROJECT_PLUGIN)
+	}
+}
+
+dependencies {
+	implementation project(path: ":jdroid-gradle-commons-plugin")
+	implementation(Libs.GRADLE_PLUGIN_PUBLISH_PLUGIN)
+	testImplementation(Libs.JUNIT)
+}
+
+gradlePlugin {
+	plugins {
+		gradleProjectPlugin {
+			id = "com.jdroidtools.gradle.plugin"
+			implementationClass = "com.jdroid.gradle.GradleProjectPlugin"
+		}
+	}
+}
+
+// Configuration to publish your plugin to the plugin portal
+//pluginBundle {
+//	website = "http://www.jdroidtools.com/"
+//	vcsUrl = "https://github.com/maxirosson/jdroid-gradle-plugin"
+//
+//	plugins {
+//		javaWebPlugin {
+//			id = "com.jdroid.gradle.plugin"
+//			displayName = "Jdroid Gradle Plugin"
+//			description = "Gradle Plugin for Gradle Plugin projects"
+//			tags = ["jdroid", "gradle"]
+//		}
+//	}
+//
+//	mavenCoordinates {
+//		groupId = "com.jdroidtools"
+//		artifactId = "jdroid-gradle-project-plugin"
+//	}
+//}

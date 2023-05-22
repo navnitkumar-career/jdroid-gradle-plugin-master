@@ -1,0 +1,22 @@
+ext.PROJECT_NAME = "Gradle Plugin Commons"
+description = "Gradle Plugin Commons"
+
+// TODO Rename to jdroid-gradle-commons
+ext.ARTIFACT_ID = "jdroid-gradle-commons-plugin"
+
+
+// TODO This artifact should not be a plugin
+apply plugin: "com.jdroidtools.gradle.plugin"
+
+buildscript {
+	dependencies {
+		//classpath(BuildLibs.GRADLE_PLUGIN_PUBLISH_PLUGIN)
+		classpath(BuildLibs.JDROID_GRADLE_PROJECT_PLUGIN)
+	}
+}
+
+dependencies {
+	compile(Libs.JDROID_JAVA_CORE)
+	compile(Libs.DOKKA_PLUGIN)
+	testImplementation(Libs.JUNIT)
+}
